@@ -2,11 +2,11 @@ import './style.css';
 
 async function getWeatherData(location){
     const apiKey = '6430268cfcd046f1b4183458262304';
-    const card = document.getElementById('weather-card');
+    const waitStatus= document.getElementById('weather-card');
 
     try {
-        if(card) {
-            card.classList.add('loading')
+        if(waitStatus) {
+            waitStatus.classList.add('loading')
         };
         
         const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`,
@@ -14,7 +14,7 @@ async function getWeatherData(location){
         );
 
         if(!response.ok){
-        throw new Error('City not found')
+            throw new Error('City not found')
         }
 
         const weatherData = await response.json();
@@ -28,8 +28,8 @@ async function getWeatherData(location){
         errorDiv.classList.add('active');
         
     } finally {
-       if(card) {
-        card.classList.remove('loading')
+       if(waitStatus) {
+        waitStatus.classList.remove('loading')
         };
     }
 }
@@ -61,6 +61,8 @@ function processData(weatherData){
 }
 
 function displayData(cleanData){
+  
+    
     const cityDisplay = document.getElementById('city-name');
     const conditionDisplay = document.getElementById('weather-condition');
     const tempDisplay = document.getElementById('temperature');
@@ -70,8 +72,10 @@ function displayData(cleanData){
     cityDisplay.textContent = cleanData.city;
     conditionDisplay.textContent = cleanData.condition;
     tempDisplay.textContent = `${cleanData.temp} ºC`;
-    precipDisplay.textContent = `${cleanData.precipitation} mm`;
-    humidityDisplay.textContent = `${cleanData.humidity} %`;
+    precipDisplay.textContent = `Rain: ${cleanData.precipitation} mm`;
+    humidityDisplay.textContent = `Humidity: ${cleanData.humidity} %`;
+    
+    document.body.className = cleanData.condition.toLowerCase();
 }
 
 getWeatherData('Madrid');
