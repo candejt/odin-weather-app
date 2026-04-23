@@ -1,0 +1,29 @@
+body{
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+    background-color: #f0f2f5;
+}
+#main-container{
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+#search-form{
+    margin-bottom: 20px;
+}
+.weather-card{
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+#temp-container{
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.hidden{
+    display: none;
+}
