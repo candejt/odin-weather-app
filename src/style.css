@@ -13,7 +13,7 @@ body{
 #search-form{
     margin-bottom: 20px;
 }
-.weather-card{
+#weather-card{
     background-color: white;
     padding: 2rem;
     border-radius: 12px;
@@ -24,6 +24,14 @@ body{
     font-weight: bold;
     margin: 10px 0;
 }
-.hidden{
+#error-message{
     display: none;
+    color: red;
+}
+#error-message.active{
+    display: block;
+}
+.loading{
+    opacity: 0.4;
+    background-color: grey;
 }

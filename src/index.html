@@ -13,20 +13,20 @@
                 <input type="text" id="search-input" placeholder="Search your city" required>
                 <button type="submit" id="search-btn">Search</button>
             </form>
+            <div id="error-message"></div>
         </header>
 
         <main id="weather-display">
-            <div class="weather-card">
-                <h2 id="city-name">Vigo</h2>
-                <p id="weather-condition">Sunny</p>
+            <div id="weather-card">
+                <h2 id="city-name"></h2>
+                <p id="weather-condition"></p>
                 <div id="temp-container">
-                    <span id="temperature">18</span>ºC
+                    <span id="temperature"></span>
                 </div>
+                <p id="precipitation"></p>
+                <p id="humidity"></p>
             </div>
         </main>
-
-        <div id="error-message" class="hidden">City not found. Please, try again.</div>
-
     </div>
 </body>
 </html>
