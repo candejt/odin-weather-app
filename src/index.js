@@ -53,7 +53,8 @@ function processData(weatherData){
     const myData = {
         city: weatherData.location.name,
         condition:weatherData.current.condition.text,
-        temp: weatherData.current.temp_c,
+        tempC: weatherData.current.temp_c,
+        tempF: weatherData.current.temp_f,
         precipitation:weatherData.current.precip_mm,
         humidity:weatherData.current.humidity,
     }
@@ -61,21 +62,35 @@ function processData(weatherData){
 }
 
 function displayData(cleanData){
-  
-    
     const cityDisplay = document.getElementById('city-name');
     const conditionDisplay = document.getElementById('weather-condition');
     const tempDisplay = document.getElementById('temperature');
     const precipDisplay = document.getElementById('precipitation');
     const humidityDisplay = document.getElementById('humidity');
 
+    tempDisplay.dataset.c=cleanData.tempC;
+    tempDisplay.dataset.f = cleanData.tempF;
+
     cityDisplay.textContent = cleanData.city;
     conditionDisplay.textContent = cleanData.condition;
-    tempDisplay.textContent = `${cleanData.temp} ºC`;
+    tempDisplay.textContent = `${cleanData.tempC} ºC`;
     precipDisplay.textContent = `Rain: ${cleanData.precipitation} mm`;
     humidityDisplay.textContent = `Humidity: ${cleanData.humidity} %`;
     
     document.body.className = cleanData.condition.toLowerCase();
 }
+
+const unitBtn = document.getElementById('unit-btn');
+const tempDisplay = document.getElementById('temperature');
+
+unitBtn.addEventListener('click', ()=>{
+    if (!tempDisplay.dataset.c) return;
+
+    const isCelsius = tempDisplay.textContent.includes('ºC');
+
+    tempDisplay.textContent = isCelsius
+        ? `${tempDisplay.dataset.f} ºF`
+        : `${tempDisplay.dataset.c} ºC`
+})
 
 getWeatherData('Madrid');

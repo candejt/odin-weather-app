@@ -81,7 +81,7 @@ body.rain{
 body.snow{
     background: linear-gradient(to bottom, #dae6e5, #dae3e6);
 }
-button{
+#search-btn{
     background-color: #333;
     color: white;
     border: none;
@@ -89,4 +89,19 @@ button{
     border-radius: 30px;
     cursor: pointer;
     margin-left: -40px;
+}
+#unit-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #444;
+    padding: 5px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+#unit-btn:hover {
+    background: rgba(255, 255, 255, 0.5);
 }
